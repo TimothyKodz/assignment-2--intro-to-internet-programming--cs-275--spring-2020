@@ -1,0 +1,11 @@
+const { src, dest, series, watch } = require(`gulp`);
+const sass = require(`gulp-sass`);
+const htmlValidator = require(`gulp-html`);
+const cssValidator = require(`gulp-csslint`)
+const jsLinter = require(`gulp-eslint`);
+const babel = require(`gulp-babel`);
+const htmlCompressor = require(`gulp-htmlmin`);
+const cssCompressor = require(`gulp-clean-css`)
+const jsCompressor = require(`gulp-uglify`);
+const browserSync = require(`browser-sync`);
+const reload = browserSync.reload;
