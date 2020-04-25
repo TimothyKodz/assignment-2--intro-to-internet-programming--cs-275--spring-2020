@@ -80,7 +80,7 @@ let serve = () => {
     watch(`sass/**/*.scss`).on(`change`, compileCSS)
     watch(`html/**/*.html`).on(`change`, series(validateHTML, reload));
     watch(`css/**/*.css`).on(`change`, series(lintCSS, reload));
-    watch(`js/**/*.js`).on(`change`, series(lintJS, reload));
+    watch(`js/**/*.js`).on(`change`, series(lintJS, transpileJS, reload));
 };
 
 exports.compileCSS = compileCSS;
@@ -92,3 +92,4 @@ exports.compressHTML = compressHTML;
 exports.compressCSS = compressCSS;
 exports.compressJS = compressJS;
 exports.dev = serve;
+exports.build = series(compressHTML, compressCSS, compressJS)
