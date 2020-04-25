@@ -62,3 +62,12 @@ let compressJS = () => {
         .pipe(jsCompressor())
         .pipe(dest(`prod/scripts`));
 };
+
+exports.compileCSS = compileCSS;
+exports.validateHTML = validateHTML;
+exports.lintCSS = lintCSS;
+exports.lintJS = lintJS;
+exports.transpileJS = transpileJS;
+exports.compressHTML = compressHTML;
+exports.compressCSS = compressCSS;
+exports.compressJS = compressJS;
