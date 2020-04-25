@@ -1,5 +1,5 @@
 const { src, dest, series, watch } = require(`gulp`);
-const compileCSS = require(`gulp-sass`);
+const sass = require(`gulp-sass`);
 const htmlValidator = require(`gulp-html`);
 const cssLinter = require(`gulp-stylelint`);
 const jsLinter = require(`gulp-eslint`);
@@ -63,6 +63,26 @@ let compressJS = () => {
         .pipe(dest(`prod/scripts`));
 };
 
+let serve = () => {
+    browserSync({
+        notify: true,
+        reloadDelay: 50,
+        server: {
+            baseDir: [
+                `temp`,
+                `html`,
+                `css`,
+                `js`
+            ]
+        }
+    });
+
+    watch(`sass/**/*.scss`).on(`change`, compileCSS)
+    watch(`html/**/*.html`).on(`change`, series(validateHTML, reload));
+    watch(`css/**/*.css`).on(`change`, series(lintCSS, reload));
+    watch(`js/**/*.js`).on(`change`, series(lintJS, reload));
+};
+
 exports.compileCSS = compileCSS;
 exports.validateHTML = validateHTML;
 exports.lintCSS = lintCSS;
@@ -71,3 +91,4 @@ exports.transpileJS = transpileJS;
 exports.compressHTML = compressHTML;
 exports.compressCSS = compressCSS;
 exports.compressJS = compressJS;
+exports.dev = serve;
