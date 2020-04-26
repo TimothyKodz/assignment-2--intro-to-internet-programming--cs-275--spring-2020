@@ -16,7 +16,7 @@ let compileCSS = () => {
             outputStyle: `expanded`,
             precision: 10
         }).on(`error`, sass.logError))
-        .pipe(dest(`css/style.css`)); //Made a change here "css/" to "css/style.css"
+        .pipe(dest(`css/`));
 };
 
 let validateHTML = () => {
