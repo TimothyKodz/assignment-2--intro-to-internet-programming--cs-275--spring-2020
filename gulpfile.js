@@ -11,7 +11,7 @@ const browserSync = require(`browser-sync`);
 const reload = browserSync.reload;
 
 let compileCSS = () => {
-    return src(`sass/main.scss`)
+    return src(`sass/style.scss`)
         .pipe(sass({
             outputStyle: `expanded`,
             precision: 10
