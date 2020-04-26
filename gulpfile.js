@@ -42,7 +42,9 @@ let lintJS = () => {
 
 let transpileJS = () => {
     return src(`js/*.js`)
-    .pipe(babel())
+    .pipe(babel({
+        presets: ['@babel/preset-env']
+    }))
 }
 
 let compressHTML = () => {
