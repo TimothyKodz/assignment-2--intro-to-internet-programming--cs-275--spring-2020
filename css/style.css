@@ -1,3 +1,53 @@
-html {
-  background-color: pink;
+p,
+label,
+li,
+input {
+  font-weight: 400;
+}
+
+body {
+  margin: 30px 20px;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 600;
+  letter-spacing: 12px;
+  text-align: center;
+}
+
+select,
+#recipe {
+  font-size: 24px;
+  margin: 10px 100px;
+}
+
+select h2,
+#recipe h2 {
+  font-size: 36px;
+}
+
+select label,
+select input,
+#recipe label,
+#recipe input {
+  margin: 20px 0;
+}
+
+select .directions,
+#recipe .directions {
+  margin: 20px 0;
+}
+
+select .directions ol,
+#recipe .directions ol {
+  line-height: 28px;
+  list-style: numbers;
+  list-style-position: outside;
+  padding: 0 80px;
+}
+
+select .directions .extra-d,
+#recipe .directions .extra-d {
+  padding: 0 80px;
 }
