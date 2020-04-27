@@ -1,4 +1,7 @@
 let riceType;
+let riceValCup;
+let waterValCup;
+let oilValTbsp;
 
 function getRecipe() {
     riceType = document.getElementById(`rice-type`).value;
@@ -38,15 +41,19 @@ function getRecipe() {
 }
 
 function calcRatios() {
-    var riceValCup = document.getElementById(`rice-val`).value || 0;
+    riceValCup = document.getElementById(`rice-val`).value || 0;
 
     if (riceType == 'c-rice') {
-        var waterValCup = (1.6 * riceValCup);
-        var oilValTbsp = (0.8 * riceValCup);
+        waterValCup = (1.6 * riceValCup);
+        oilValTbsp = (0.8 * riceValCup);
 
     }
     else if (riceType == 'w-rice') {
-        var waterValCup = (2 * riceValCup);
-        var oilValTbsp = (1 * riceValCup);
+        waterValCup = (2 * riceValCup);
+        oilValTbsp = (1 * riceValCup);
     }
+
+    console.log(riceValCup);
+    console.log(waterValCup);
+    console.log(oilValTbsp);
 }
