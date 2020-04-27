@@ -11,7 +11,7 @@ const browserSync = require(`browser-sync`);
 const reload = browserSync.reload;
 
 let compileCSS = () => {
-    return src(`sass/style.scss`)
+    return src(`temp/sass/style.scss`)
         .pipe(sass({
             outputStyle: `expanded`,
             precision: 10
@@ -79,7 +79,7 @@ let serve = () => {
         }
     });
 
-    watch(`sass/**/*.scss`).on(`change`, compileCSS)
+    watch(`temp/sass/**/*.scss`).on(`change`, compileCSS)
     watch(`html/**/*.html`).on(`change`, series(validateHTML, reload));
     watch(`css/**/*.css`).on(`change`, series(lintCSS, reload));
     watch(`js/**/*.js`).on(`change`, series(lintJS, transpileJS, reload));
