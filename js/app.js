@@ -8,6 +8,9 @@ function getRecipe() {
         display.innerHTML = (
             `<h2>Making Sprouted California Rice</h2>
 
+            <label for="rice-val">Enter amount of rice you would like to cook</label>
+            <input type="number" id="rice-val" step="any" oninput="calcRatios()">
+
             <p>For slightly al dente rice:</p>
             <ol>
                 <li>Combine 1 1/4 cups of rice with 2 cups of water or broth and 1 Tbsp olive oil.</li>
@@ -22,6 +25,9 @@ function getRecipe() {
     else if (riceType == `w-rice`) {
         display.innerHTML = (
             `<h2>Making White Rice</h2>
+
+            <label for="rice-val">Enter amount of rice you would like to cook</label>
+            <input type="number" id="rice-val" step="any" oninput="calcRatios()">
 
             <ol>
                 <li>Combine 1 cup of rice with 2 cups of water and 1 Tbsp olive oil.</li>
