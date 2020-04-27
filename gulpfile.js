@@ -96,5 +96,5 @@ exports.transpileJS = transpileJS;
 exports.compressHTML = compressHTML;
 exports.compressCSS = compressCSS;
 exports.compressJS = compressJS;
-exports.dev = serve;
+exports.dev = series(validateHTML, lintCSS, lintJS, serve);
 exports.build = series(compressHTML, compressCSS, compressJS)
