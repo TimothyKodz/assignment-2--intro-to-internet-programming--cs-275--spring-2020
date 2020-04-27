@@ -21,8 +21,7 @@ let compileCSS = () => {
 
 let validateHTML = () => {
     return src(`html/*.html`)
-        .pipe(htmlValidator())
-        .pipe(dest(`temp/`));
+        .pipe(htmlValidator());
 };
 
 let lintCSS = () => {
@@ -39,8 +38,7 @@ let lintCSS = () => {
 let lintJS = () => {
     return src(`scripts/*.js`)
         .pipe(jsLinter())
-        .pipe(jsLinter.formatEach(`compact`, process.stderr))
-        .pipe(dest(`temp/js/`));
+        .pipe(jsLinter.formatEach(`compact`, process.stderr));
 };
 
 let transpileJS = () => {
@@ -48,7 +46,8 @@ let transpileJS = () => {
     .pipe(babel({
         presets: ['@babel/preset-env']
     }))
-}
+    .pipe(dest(`temp/js/`));
+};
 
 let compressHTML = () => {
     return src(`html/*.html`)
@@ -59,8 +58,8 @@ let compressHTML = () => {
 let compressCSS = () => {
     return src(`css/*.css`)
         .pipe(cssCompressor())
-        .pipe(dest(`prod/css`))
-}
+        .pipe(dest(`prod/css`));
+};
 
 let compressJS = () => {
     return src(`js/*.js`)
@@ -77,8 +76,8 @@ let serve = () => {
         reloadDelay: 50,
         server: {
             baseDir: [
-                `temp`,
-                `html`
+                `html`,
+                `temp`
             ]
         }
     });
@@ -97,5 +96,5 @@ exports.transpileJS = transpileJS;
 exports.compressHTML = compressHTML;
 exports.compressCSS = compressCSS;
 exports.compressJS = compressJS;
-exports.dev = series(validateHTML, lintCSS, lintJS, serve);
+exports.dev = series(validateHTML,compileCSS, lintCSS, lintJS, transpileJS, serve);
 exports.build = series(compressHTML, compressCSS, compressJS)
