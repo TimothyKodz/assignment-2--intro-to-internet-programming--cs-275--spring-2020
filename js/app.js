@@ -1,36 +1,33 @@
+let riceType;
+
 function getRecipe() {
-    let riceSelection = document.getElementById(`rice-type`);
-    let riceType = riceSelection.value;
+    riceType = document.getElementById(`rice-type`).value;
     let display = document.getElementById(`recipe`)
 
     if (riceType == `c-rice`) {
-        display.innerHTML = `<h2>Making Sprouted California Rice</h2>
+        display.innerHTML = (
+            `<h2>Making Sprouted California Rice</h2>
 
-        <label for="c-rice-val">Enter amount of rice you would like to cook</label>
-        <input type="number" id="c-rice-val" step="any">
+            <p>For slightly al dente rice:</p>
+            <ol>
+                <li>Combine 1 1/4 cups of rice with 2 cups of water or broth and 1 Tbsp olive oil.</li>
+                <li>Bring to a boil and stir once to mix.</li>
+                <li>Reduce heat to low, cover with a tight-fitting lid and cook for 25 minutes.</li>
+                <li>Remove from heat and let stand for 5 minutes. Fluff with a fork and serve.</li>
+            </ol>
 
-        <p>For slightly al dente rice:</p>
-         <ol>
-            <li>Combine 1 1/4 cups of rice with 2 cups of water or broth and 1 Tbsp olive oil.</li>
-            <li>Bring to a boil and stir once to mix.</li>
-            <li>Reduce heat to low, cover with a tight-fitting lid and cook for 25 minutes.</li>
-           <li>Remove from heat and let stand for 5 minutes. Fluff with a fork and serve.</li>
-         </ol>
-
-       <p>For softer rice:</p>
-       <p>Increase liquid by 1/2 cup and cook time by 5 minutes.</p>`
+            <p>For softer rice:</p>
+            <p>Increase liquid by 1/2 cup and cook time by 5 minutes.</p>`);
     }
     else if (riceType == `w-rice`) {
-        display.innerHTML = `<h2>Making White Rice</h2>
+        display.innerHTML = (
+            `<h2>Making White Rice</h2>
 
-        <label for="w-rice-val">Enter amount of rice you would like to cook</label>
-        <input type="number" id="w-rice-val" step="any">
-
-        <ol>
-         <li>Combine 1 cup of rice with 2 cups of water and 1 Tbsp olive oil.</li>
-         <li>Bring to a boil, then reduce heat to the lowest setting.</li>
-         <li>Cook for about 18 minutes.</li>
-        </ol>`
+            <ol>
+                <li>Combine 1 cup of rice with 2 cups of water and 1 Tbsp olive oil.</li>
+                <li>Bring to a boil, then reduce heat to the lowest setting.</li>
+                <li>Cook for about 18 minutes.</li>
+            </ol>`);
     }
 }
 
