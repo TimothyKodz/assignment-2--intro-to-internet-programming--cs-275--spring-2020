@@ -21,7 +21,8 @@ let compileCSS = () => {
 
 let validateHTML = () => {
     return src(`html/*.html`)
-        .pipe(htmlValidator());
+        .pipe(htmlValidator())
+        .pipe(dest(`temp/`));
 };
 
 let lintCSS = () => {
@@ -31,13 +32,15 @@ let lintCSS = () => {
             reporters: [
                 {formatter: `verbose`, console: true}
             ]
-        }));
+        }))
+        .pipe(dest(`temp/css/`));
 };
 
 let lintJS = () => {
     return src(`scripts/*.js`)
         .pipe(jsLinter())
-        .pipe(jsLinter.formatEach(`compact`, process.stderr));
+        .pipe(jsLinter.formatEach(`compact`, process.stderr))
+        .pipe(dest(`temp/js/`));
 };
 
 let transpileJS = () => {
@@ -50,13 +53,13 @@ let transpileJS = () => {
 let compressHTML = () => {
     return src(`html/*.html`)
         .pipe(htmlCompressor({collapseWhitespace: true}))
-        .pipe(dest(`prod/html`));
+        .pipe(dest(`prod/`));
 };
 
 let compressCSS = () => {
     return src(`css/*.css`)
         .pipe(cssCompressor())
-        .pipe(dest(`prod/style`))
+        .pipe(dest(`prod/css`))
 }
 
 let compressJS = () => {
@@ -65,7 +68,7 @@ let compressJS = () => {
             presets: ['@babel/preset-env']
         }))
         .pipe(jsCompressor())
-        .pipe(dest(`prod/scripts`));
+        .pipe(dest(`prod/js`));
 };
 
 let serve = () => {
@@ -75,9 +78,7 @@ let serve = () => {
         server: {
             baseDir: [
                 `temp`,
-                `html`,
-                `css`,
-                `js`
+                `html`
             ]
         }
     });
