@@ -32,17 +32,15 @@ function getRecipe() {
 }
 
 function calcRatios() {
-    let riceValCup;
-    let riceValOz;
-    let waterValCup;
-    let waterValOz;
-    const oilValOz = .5
+    var riceValCup = document.getElementById(`rice-val`).value || 0;
+
     if (riceType == 'c-rice') {
-        riceValCup = document.getElementById(`c-rice-val`).value;
-        console.log(riceValCup);
+        var waterValCup = (1.6 * riceValCup);
+        var oilValTbsp = (0.8 * riceValCup);
+
     }
     else if (riceType == 'w-rice') {
-        riceValCup = document.getElementById(`w-rice-val`).value;
-        console.log(riceValCup);
+        var waterValCup = (2 * riceValCup);
+        var oilValTbsp = (1 * riceValCup);
     }
 }
