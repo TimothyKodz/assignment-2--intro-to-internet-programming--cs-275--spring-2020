@@ -16,7 +16,7 @@ function getRecipe() {
 
             <p>For slightly al dente rice:</p>
             <ol>
-                <li>Combine 1 1/4 cups of rice with 2 cups of water or broth and 1 Tbsp olive oil.</li>
+                <li>Combine <span id="c-rice-val">0</span> cups of rice with <span id="c-water-val">0</span> cups of water or broth and <span id="c-oil-val">0</span> Tbsp olive oil.</li>
                 <li>Bring to a boil and stir once to mix.</li>
                 <li>Reduce heat to low, cover with a tight-fitting lid and cook for 25 minutes.</li>
                 <li>Remove from heat and let stand for 5 minutes. Fluff with a fork and serve.</li>
@@ -33,7 +33,7 @@ function getRecipe() {
             <input type="number" id="rice-val" step="any" oninput="calcRatios()">
 
             <ol>
-                <li>Combine 1 cup of rice with 2 cups of water and 1 Tbsp olive oil.</li>
+                <li>Combine <span id="w-rice-val">0</span> cup of rice with <span id="w-water-val">0</span> cups of water and <span id="w-oil-val">0</span> Tbsp olive oil.</li>
                 <li>Bring to a boil, then reduce heat to the lowest setting.</li>
                 <li>Cook for about 18 minutes.</li>
             </ol>`);
@@ -44,16 +44,19 @@ function calcRatios() {
     riceValCup = document.getElementById(`rice-val`).value || 0;
 
     if (riceType == 'c-rice') {
-        waterValCup = (1.6 * riceValCup);
-        oilValTbsp = (0.8 * riceValCup);
+        waterValCup = (1.6 * riceValCup).toFixed(2);
+        oilValTbsp = (0.8 * riceValCup).toFixed(2);
 
+        document.getElementById(`c-rice-val`).innerHTML = riceValCup;
+        document.getElementById(`c-water-val`).innerHTML = waterValCup;
+        document.getElementById(`c-oil-val`).innerHTML = oilValTbsp;
     }
     else if (riceType == 'w-rice') {
-        waterValCup = (2 * riceValCup);
-        oilValTbsp = (1 * riceValCup);
-    }
+        waterValCup = (2 * riceValCup).toFixed(2);
+        oilValTbsp = (1 * riceValCup).toFixed(2);
 
-    console.log(riceValCup);
-    console.log(waterValCup);
-    console.log(oilValTbsp);
+        document.getElementById(`w-rice-val`).innerHTML = riceValCup;
+        document.getElementById(`w-water-val`).innerHTML = waterValCup;
+        document.getElementById(`w-oil-val`).innerHTML = oilValTbsp;
+    }
 }
