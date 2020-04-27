@@ -61,6 +61,9 @@ let compressCSS = () => {
 
 let compressJS = () => {
     return src(`js/*.js`)
+        .pipe(babel({
+            presets: ['@babel/preset-env']
+        }))
         .pipe(jsCompressor())
         .pipe(dest(`prod/scripts`));
 };
