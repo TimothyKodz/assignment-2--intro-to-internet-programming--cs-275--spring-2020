@@ -19,6 +19,10 @@ let compileCSS = () => {
         .pipe(dest(`css/`));
 };
 
+let watchSASS = () => {
+    watch(`sass/**/*.scss`).on(`change`, compileCSS)
+}
+
 let validateHTML = () => {
     return src(`html/*.html`)
         .pipe(htmlValidator());
@@ -82,13 +86,13 @@ let serve = () => {
         }
     });
 
-    watch(`sass/**/*.scss`).on(`change`, compileCSS)
     watch(`html/**/*.html`).on(`change`, series(validateHTML, reload));
     watch(`css/**/*.css`).on(`change`, series(lintCSS, reload));
     watch(`js/**/*.js`).on(`change`, series(lintJS, transpileJS, reload));
 };
 
 exports.compileCSS = compileCSS;
+exports.watchSASS = watchSASS;
 exports.validateHTML = validateHTML;
 exports.lintCSS = lintCSS;
 exports.lintJS = lintJS;
@@ -96,5 +100,5 @@ exports.transpileJS = transpileJS;
 exports.compressHTML = compressHTML;
 exports.compressCSS = compressCSS;
 exports.compressJS = compressJS;
-exports.dev = series(validateHTML,compileCSS, lintCSS, lintJS, transpileJS, serve);
+exports.dev = series(validateHTML, lintCSS, lintJS, transpileJS, serve);
 exports.build = series(compressHTML, compressCSS, compressJS)
